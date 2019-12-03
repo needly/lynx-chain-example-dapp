@@ -9,8 +9,10 @@ const signin = () => {
 }
 
 const populateWelcomeScreen = () => {
+  let timer = setTimeout(noConnectionError, 10000);
   signin()
   .then((accountData) => {
+    clearTimeout(timer);
     if (
       accountData
       && (
@@ -28,6 +30,11 @@ const populateWelcomeScreen = () => {
       $('#error-box .white-text').text(`Unable to singin, Please make sure you are on LYNX chain.`);
     }
   });
+}
+
+const noConnectionError = () => {
+  $('#error-box').css('display', 'block');
+  $('#error-box .white-text').text(`Unable to singin.`);
 }
 
 const handleDraw = () => {

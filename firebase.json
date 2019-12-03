@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "public",
+    "site": "lynx-chain-example-dapp",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
