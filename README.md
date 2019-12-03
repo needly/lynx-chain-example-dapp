@@ -1,1 +1,0 @@
-# lynx-chain-example-dapp

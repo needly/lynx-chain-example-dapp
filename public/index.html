@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+    <div class="container" id="mainscreen">
+      <h3 class="flow-text center-align">Lucky Numbers Lottery</h3>
+      <p class="center-align">
+        <span class="account-result"></span>
+        <br><br>
+        <a class="waves-effect waves-light btn-large" onClick="handleDraw()">Draw</a>
+        <br><br>
+        <span class="small">1 draw = 1 LNX</span>
+      </p>
+
+      <div class="card-panel teal lighten-3" id="result-box">
+        <span class="black-text"></span>
+      </div>
+    </div>
+
+    <div class="container" id="error-box">
+      <div class="card-panel red darken-2">
+        <span class="white-text"></span>
+      </div>
+    </div>
+
+    <div id="preloader">
+      <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-green-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="script.js?v=5"></script>
+  </body>
+</html>
