@@ -1,6 +1,6 @@
-# Lynx Wallet Dapp - Step by Stepd
+# Lynx Wallet Dapp - Step by Step
 
-repository: [https://github.com/needly/lynx-chain-example-dapp/](https://github.com/needly/lynx-chain-example-dapp/)
+repository: [https://github.com/needly/lynx-chain-example-dapp/](https://github.com/needly/lynx-chain-example-dapp/) <br>
 demo: [https://lynx-chain-example-dapp.firebaseapp.com/](https://lynx-chain-example-dapp.firebaseapp.com/)
 
 ### Local developemnt environment and deployment
