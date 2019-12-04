@@ -1,18 +1,25 @@
 /* jslint esversion: 6 */
 
-let accountChainId = '';
-
 const signin = () => {
   console.log('signin');
   return window.lynxMobile.requestSetAccountName()
   .then((accountName) => window.lynxMobile.requestSetAccount(accountName));
 }
 
+const noConnectionError = () => {
+  $('#error-box').css('display', 'block');
+  $('#error-box .white-text').text(`Unable to singin.`);
+}
+
+const noWalletError = () => {
+  $('#error-box').css('display', 'block');
+  $('#error-box .white-text').html(`No Wallet found. Please run this dapp inside the <a href="https://lynxwallet.io/downloads" title="Lynx Wallet">Lynx Wallet</a>.`);
+}
+
 const populateWelcomeScreen = () => {
-  let timer = setTimeout(noConnectionError, 10000);
   signin()
   .then((accountData) => {
-    clearTimeout(timer);
+    clearTimeout(timer1);
     if (
       accountData
       && (
@@ -20,7 +27,6 @@ const populateWelcomeScreen = () => {
         || accountData.chainId === 'f11d5128e07177823924a07df63bf59fbd07e52c44bc77d16acc1c6e9d22d37b' // test net
       )
     ) {
-      accountChainId = accountData.chainId;
       const tokens = accountData.tokens.filter(tokenEntry => tokenEntry.symbol === 'LNX').shift();
       $('.account-result').text(`logged in as @${accountData.account.account_name} | ${parseFloat(tokens.amount)} LNX`)
       $('#preloader').css('display', 'none');
@@ -30,11 +36,6 @@ const populateWelcomeScreen = () => {
       $('#error-box .white-text').text(`Unable to singin, Please make sure you are on LYNX chain.`);
     }
   });
-}
-
-const noConnectionError = () => {
-  $('#error-box').css('display', 'block');
-  $('#error-box .white-text').text(`Unable to singin.`);
 }
 
 const handleDraw = () => {
@@ -75,8 +76,11 @@ const handleDraw = () => {
   });
 }
 
+
+let timer0 = setTimeout(noWalletError, 10000);
 window.addEventListener( "lynxMobileLoaded", () => {
-  console.log('test');
+  clearTimeout(timer0);
   // lynx is on the window and ready!
+  let timer1 = setTimeout(noConnectionError, 10000);
   populateWelcomeScreen();
 });
