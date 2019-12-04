@@ -6,12 +6,12 @@ const signin = () => {
   .then((accountName) => window.lynxMobile.requestSetAccount(accountName));
 }
 
-const noConnectionError = () => {
+const showConnectionError = () => {
   $('#error-box').css('display', 'block');
   $('#error-box .white-text').text(`Unable to singin.`);
 }
 
-const noWalletError = () => {
+const showWalletError = () => {
   $('#error-box').css('display', 'block');
   $('#error-box .white-text').html(`No Wallet found. Please run this dapp inside the <a href="https://lynxwallet.io/downloads" title="Lynx Wallet">Lynx Wallet</a>.`);
 }
@@ -77,10 +77,10 @@ const handleDraw = () => {
 }
 
 
-let timer0 = setTimeout(noWalletError, 10000);
+let timer0 = setTimeout(showWalletError, 10000);
 window.addEventListener( "lynxMobileLoaded", () => {
   clearTimeout(timer0);
   // lynx is on the window and ready!
-  let timer1 = setTimeout(noConnectionError, 10000);
+  let timer1 = setTimeout(showConnectionError, 10000);
   populateWelcomeScreen();
 });

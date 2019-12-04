@@ -5,17 +5,22 @@ demo: [https://lynx-chain-example-dapp.firebaseapp.com/](https://lynx-chain-exam
 
 ### Local developemnt environment and deployment
 ##### Tools:
+- git - https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 - node (version 11.10.0) - https://nodejs.org/en/
 - yarn (recommended) - https://yarnpkg.com/en/docs/install#mac-stable
 - nodemon (recommended) - https://nodemon.io/
 - firebase CLI - https://firebase.google.com/docs/cli
 
 ##### To run locally:
-got to your terminal and navigate to dapps directory that you cloned from github
+clone github repository:
+```
+git clone https://github.com/needly/lynx-chain-example-dapp.git
+```
+go to your terminal and navigate to dapp directory that you cloned from github
 ```
 cd lynx-chain-example-dapp
 ```
-To install dependencies:
+To install dapp developement environment dependencies:
 ```
 yarn install
 ```
@@ -53,9 +58,9 @@ lynx-chain-example-dapp
         ├── script.js
         └── style.css
 ```
-**index.html** holds basic document structure and some immutable text
-**script.js** holds all the logic of our app
-**style.css** holds some dapp specific styling
+- **index.html** holds basic document structure and some immutable text
+- **script.js** holds all the logic of our app
+- **style.css** holds some dapp specific styling
 
 ### Used technologies
 To make everything easier we are using some basic frameworks. I didn't want to use fancy do-it-all frameworks because that tends to abstract away the basic principles of how it works and that would defeat the purpose of this example.
@@ -72,12 +77,11 @@ All HTML we need to care about [is between line 13 and 48](https://github.com/ne
 -- `<a class="waves-effect waves-light btn-large" onClick="handleDraw()">Draw</a>` main draw button `onClick` attribute defines the javascript function that is going to be triggered by clicking the button
 
 ##### Javascript description
-Our code is using ES6 Javascript version. We are using "fat arrow" functions `() => {}` in this case just to make it more legible. We are using plain [lynxwallet SDK API](https://developers.lynxwallet.io/sdk)
-we have 5 basic functions
+Our code is using ES6 Javascript version. We are using "fat arrow" functions `() => {}` in this case just to make it more legible. We are using plain [lynxwallet SDK API](https://developers.lynxwallet.io/sdk) and we have 5 basic functions.
 - signin function requests the account name and account state
 - populateWelcomeScreen function uses signin data to populate mainscreen html
 - handleDraw function handles the actual transaction with blockchain as well as random number generation
-- noConnectionError and noWalletError are helper functions to show error
+- showConnectionError and showWalletError are helper functions to show error
 
 ##### CSS styles description
 Included file is being only used to hide html elements on load and to center the preloader on the page.
@@ -112,7 +116,7 @@ if (
       )
 ) {
 ```
-change to:
+change to (EOS mainnet chainId: aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906):
 ```
 if (accountData && accountData.chainId === 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906') {
 ```
@@ -125,5 +129,5 @@ $('.account-result').text(`logged in as @${accountData.account.account_name} | $
 
 
 ##### Improvement suggestions
-Currently our dapp doesn't have any overdraw protection. If you try to make a transaction without enough money in the account, the app will throw general error "Something went wrong.". It would be nice to show correct error before the transaction attempts to go through.
+Currently our dapp doesn't have any overdraw warning. If you try to make a transaction without enough money in the account, the app will throw general error "Something went wrong.". It would be nice to show correct error before the transaction attempts to go through.
 There are many ways to achieve this. The easiest is to call `signin` function at the beginning of the `handleDraw` same way `populateWelcomeScreen` is using it. Then compare the result of `accountData.tokens`.
