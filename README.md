@@ -3,7 +3,7 @@
 repository: [https://github.com/needly/lynx-chain-example-dapp/](https://github.com/needly/lynx-chain-example-dapp/) <br>
 demo: [https://lynx-chain-example-dapp.firebaseapp.com/](https://lynx-chain-example-dapp.firebaseapp.com/)
 
-### Local developemnt environment and deployment
+### Local development environment and deployment
 ##### Tools:
 - git - https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 - node (version 11.10.0) - https://nodejs.org/en/

@@ -78,9 +78,10 @@ const handleDraw = () => {
 
 
 let timer0 = setTimeout(showWalletError, 10000);
+let timer1;
 window.addEventListener( "lynxMobileLoaded", () => {
   clearTimeout(timer0);
   // lynx is on the window and ready!
-  let timer1 = setTimeout(showConnectionError, 10000);
+  timer1 = setTimeout(showConnectionError, 10000);
   populateWelcomeScreen();
 });
